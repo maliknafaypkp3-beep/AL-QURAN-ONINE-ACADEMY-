@@ -3,384 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Quran Academy</title>
+    <title>AL-QURAN ONLINE ACADEMY</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-green: #0b6623;
-            --dark-green: #044317;
-            --gold: #d4af37;
-            --bg-light: #f4f7f6;
-            --text-dark: #333333;
+            --primary-color: #0d5c3a;
+            --accent-gold: #d4af37;
+            --royal-blue: #1a365d;
+            --bg-light: #f0f4f8;
             --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --badge-blue: #0088cc;
+            --badge-red: #e53e3e;
         }
 
         body.dark-mode {
-            --bg-light: #121212;
-            --text-dark: #e0e0e0;
-            --card-bg: #1e1e1e;
+            --bg-light: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background 0.3s, color 0.3s;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            transition: all 0.3s ease;
         }
 
         body {
             background-color: var(--bg-light);
-            color: var(--text-dark);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
         header {
-            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            background: linear-gradient(135deg, #073b22, #0d5c3a, #1a365d);
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-bottom: 3px solid var(--accent-gold);
         }
 
         header h1 {
-            font-size: 24px;
-            letter-spacing: 1px;
+            font-size: 28px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 14px;
+            color: #fef08a;
+            margin-top: 5px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 30px auto;
-            padding: 20px;
+            padding: 25px;
             background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 90%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 92%;
         }
 
         .btn {
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-color), #09472d);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 12px 24px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(13, 92, 58, 0.2);
         }
 
         .btn:hover {
-            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(13, 92, 58, 0.3);
+        }
+
+        .btn-blue {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-weight: 600;
+            font-size: 14px;
         }
 
         .input-group input, .input-group select, .input-group textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
             background: var(--card-bg);
-            color: var(--text-dark);
+            color: var(--text-main);
+            font-size: 14px;
         }
 
-        .view {
-            display: none;
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
         }
 
-        .view.active {
-            display: block;
-        }
+        .view { display: none; }
+        .view.active { display: block; }
 
         .flex-center {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 35px;
         }
 
         .choice-card {
             background: var(--card-bg);
-            border: 2px solid var(--gold);
-            padding: 30px;
-            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            padding: 35px 25px;
+            border-radius: 16px;
             text-align: center;
             cursor: pointer;
-            width: 250px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            width: 280px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .choice-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: var(--accent-gold);
         }
 
         .choice-card:hover {
-            transform: translateY(-5px);
-            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .choice-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .verified-tick {
+            color: #0088cc;
+            font-size: 15px;
+            margin-left: 4px;
         }
 
         .badge-red {
-            background: #ff4d4d;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
+            padding: 3px 8px;
+            border-radius: 20px;
             font-size: 11px;
-            font-weight: bold;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: inline-block;
         }
 
-        .badge-blue {
-            background: #1da1f2;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
+        .teacher-card {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border-left: 5px solid var(--primary-color);
         }
 
-        .teacher-item, .chat-item {
-            background: rgba(0,0,0,0.03);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 4px solid var(--primary-green);
+        .teacher-info h4 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .floating-owner-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--gold);
-            color: #000;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .footer-info {
-            margin-top: 30px;
+        .footer-box {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(13, 92, 58, 0.05);
+            border-radius: 12px;
+            border: 1px dashed var(--primary-color);
             font-size: 13px;
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
+        }
+
+        .footer-box a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>⭐ ONLINE QURAN ACADEMY ⭐</h1>
-        <p style="font-size: 12px; color: #ffd700;">Learn With Us - Quran & Ramadan Sessions</p>
+        <h1><i class="fa-solid fa-quran"></i> ONLINE QURAN ACADEMY</h1>
+        <p><i class="fa-solid fa-star-and-crescent"></i> Learn With Us - Ramadan Special Sessions</p>
     </header>
 
     <div class="container">
         <!-- 1. LANDING VIEW -->
         <div id="landing-view" class="view active">
-            <h2 style="text-align: center; margin-bottom: 20px;">Welcome to Quran Academy</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Please select your role to proceed:</p>
+            <h2 style="text-align: center; font-weight: 700;">Welcome to Quran Platform</h2>
+            <p style="text-align: center; color: #718096; margin-top: 5px;">Select your account type to proceed</p>
+            
             <div class="flex-center">
                 <div class="choice-card" onclick="goToView('student-auth-view')">
+                    <i class="fa-solid fa-user-graduate"></i>
                     <h3>I AM A STUDENT</h3>
-                    <p style="margin-top: 10px; font-size: 12px;">Join classes & learn from expert Hafiz.</p>
+                    <p style="margin-top: 8px; font-size: 13px; color: #718096;">Join classes & learn Tajweed from certified Hafiz.</p>
                 </div>
                 <div class="choice-card" onclick="goToView('teacher-auth-view')">
+                    <i class="fa-solid fa-chalkboard-user"></i>
                     <h3>I AM A TEACHER</h3>
-                    <p style="margin-top: 10px; font-size: 12px;">Create courses & teach globally.</p>
+                    <p style="margin-top: 8px; font-size: 13px; color: #718096;">Register, create courses & teach globally.</p>
                 </div>
             </div>
-            <div style="margin-top: 40px; text-align: center;">
-                <p>Have Owner Code (804)? Enter below:</p>
-                <input type="password" id="owner-code-input" placeholder="Enter Owner Code 804" style="width: 200px; display: inline-block; margin-top: 10px;">
-                <button class="btn" onclick="checkOwnerLogin()">Login Owner</button>
+
+            <div style="margin-top: 45px; text-align: center; padding-top: 20px; border-top: 1px solid #edf2f7;">
+                <p style="font-size: 14px; font-weight: 600;"><i class="fa-solid fa-shield-halved"></i> Website Admin / Owner Portal</p>
+                <input type="password" id="owner-code-input" placeholder="Enter Code 804" style="width: 180px; padding: 10px; margin-top: 10px; border-radius: 6px; border: 1px solid #ccc; text-align: center;">
+                <button class="btn btn-blue" onclick="checkOwnerLogin()"><i class="fa-solid fa-key"></i> Login Admin</button>
             </div>
         </div>
 
-        <!-- 2. TEACHER AUTH & REGISTRATION -->
+        <!-- 2. TEACHER AUTH -->
         <div id="teacher-auth-view" class="view">
-            <h2>Teacher Portal</h2>
-            <div style="margin-top: 20px;">
-                <h3>Join by Code</h3>
+            <h2><i class="fa-solid fa-chalkboard-user"></i> Teacher Access Portal</h2>
+            <div style="margin-top: 20px; background: #f8fafc; padding: 20px; border-radius: 10px;">
+                <h3>Login with Teacher Code</h3>
                 <div class="input-group" style="margin-top: 10px;">
-                    <input type="text" id="teacher-code-input" placeholder="Enter Code (e.g. 5656, 3133, 7860...)">
-                    <button class="btn" style="margin-top: 10px;" onclick="teacherLoginByCode()">Login with Code</button>
+                    <input type="text" id="teacher-code-input" placeholder="Enter 4-digit Secret Code (e.g., 5656, 3133, 7860...)">
+                    <button class="btn" style="margin-top: 10px;" onclick="teacherLoginByCode()"><i class="fa-solid fa-right-to-bracket"></i> Login Now</button>
                 </div>
             </div>
-            <hr style="margin: 20px 0;">
-            <div>
-                <h3>New Registration</h3>
-                <button class="btn" onclick="goToView('teacher-register-view')">Register Now</button>
+            <div style="margin-top: 25px; text-align: center;">
+                <p>New Tutor?</p>
+                <button class="btn btn-blue" onclick="goToView('teacher-register-view')"><i class="fa-solid fa-user-plus"></i> Register as Teacher</button>
             </div>
             <br>
-            <button class="btn" style="background: #666;" onclick="goToView('landing-view')">Back</button>
+            <button class="btn" style="background: #64748b;" onclick="goToView('landing-view')"><i class="fa-solid fa-arrow-left"></i> Back</button>
         </div>
 
         <div id="teacher-register-view" class="view">
             <h2>Teacher Registration</h2>
-            <div class="input-group">
-                <label>Name:</label>
-                <input type="text" id="t-name">
-            </div>
-            <div class="input-group">
-                <label>Region:</label>
-                <input type="text" id="t-region">
-            </div>
-            <div class="input-group">
-                <label>Age:</label>
-                <input type="number" id="t-age">
-            </div>
-            <div class="input-group">
-                <label>Date of Birth (Must be 12+):</label>
-                <input type="date" id="t-dob">
-            </div>
+            <div class="input-group"><label>Full Name:</label><input type="text" id="t-name"></div>
+            <div class="input-group"><label>Region / Country:</label><input type="text" id="t-region"></div>
+            <div class="input-group"><label>Age:</label><input type="number" id="t-age"></div>
+            <div class="input-group"><label>Date of Birth (Must be 12+ Years):</label><input type="date" id="t-dob"></div>
             <div class="input-group">
                 <label>Gender:</label>
-                <select id="t-gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
+                <select id="t-gender"><option value="Male">Male</option><option value="Female">Female</option></select>
             </div>
-            <button class="btn" onclick="registerTeacher()">Enroll Now</button>
-            <br><br>
-            <button class="btn" style="background: #666;" onclick="goToView('teacher-auth-view')">Back</button>
+            <button class="btn" onclick="registerTeacher()"><i class="fa-solid fa-check"></i> Enroll & Get Code</button>
+            <button class="btn" style="background: #64748b;" onclick="goToView('teacher-auth-view')">Cancel</button>
         </div>
 
         <!-- 3. TEACHER DASHBOARD -->
         <div id="teacher-dashboard" class="view">
-            <h2>Teacher Dashboard</h2>
-            <div id="teacher-profile-card" style="background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                <!-- Filled dynamically -->
-            </div>
-            <h3>Create Course</h3>
-            <div class="input-group">
-                <label>Course Name:</label>
-                <input type="text" id="c-name">
-            </div>
-            <div class="input-group">
-                <label>Price ($ / PKR):</label>
-                <input type="text" id="c-price">
-            </div>
-            <div class="input-group">
-                <label>Services & Bio:</label>
-                <textarea id="c-bio"></textarea>
-            </div>
-            <button class="btn" onclick="createCourse()">Publish Course</button>
-            
-            <h3 style="margin-top: 20px;">Inbox & Student Hires</h3>
-            <div id="teacher-inbox" style="max-height: 150px; overflow-y: auto; background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 6px;">
-                <p style="color: #777; font-size: 13px;">No new messages yet.</p>
-            </div>
+            <h2>Teacher Profile & Dashboard</h2>
+            <div id="teacher-profile-card" style="background: rgba(13, 92, 58, 0.08); padding: 20px; border-radius: 12px; margin: 20px 0; border: 1px solid var(--primary-color);"></div>
+
+            <h3><i class="fa-solid fa-plus-circle"></i> Add New Quran Course</h3>
+            <div class="input-group"><label>Course Title:</label><input type="text" id="c-name" placeholder="e.g. Nazra Quran with Tajweed"></div>
+            <div class="input-group"><label>Charges / Fee ($ or PKR):</label><input type="text" id="c-price" placeholder="e.g. $50/Month"></div>
+            <div class="input-group"><label>Course Details / Bio:</label><textarea id="c-bio" placeholder="Course description..."></textarea></div>
+            <button class="btn" onclick="createCourse()"><i class="fa-solid fa-upload"></i> Publish Course</button>
+
+            <h3 style="margin-top: 30px;"><i class="fa-solid fa-envelope"></i> Student Inquiries & Hire Requests</h3>
+            <div id="teacher-inbox" style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 15px; border-radius: 10px; margin-top: 10px;"></div>
             <br>
-            <button class="btn" style="background: #d9534f;" onclick="logout()">Logout</button>
+            <button class="btn" style="background: #e53e3e;" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </div>
 
-        <!-- 4. STUDENT REGISTRATION & DASHBOARD -->
+        <!-- 4. STUDENT AUTH & DASHBOARD -->
         <div id="student-auth-view" class="view">
-            <h2>Student Portal</h2>
+            <h2>Student Setup Profile</h2>
+            <div class="input-group"><label>Student Name:</label><input type="text" id="s-name"></div>
+            <div class="input-group"><label>City:</label><input type="text" id="s-city"></div>
+            <div class="input-group"><label>Country:</label><input type="text" id="s-country"></div>
+            <div class="input-group"><label>Age:</label><input type="number" id="s-age"></div>
             <div class="input-group">
-                <label>Student Name:</label>
-                <input type="text" id="s-name">
-            </div>
-            <div class="input-group">
-                <label>City:</label>
-                <input type="text" id="s-city">
-            </div>
-            <div class="input-group">
-                <label>Country:</label>
-                <input type="text" id="s-country">
-            </div>
-            <div class="input-group">
-                <label>Age:</label>
-                <input type="number" id="s-age">
-            </div>
-            <div class="input-group">
-                <label>Choose Avatar Icon:</label>
+                <label>Select Avatar:</label>
                 <select id="s-avatar">
                     <option value="👦">👦 Boy Avatar</option>
                     <option value="👧">👧 Girl Avatar</option>
-                    <option value="🧔">🧔 Man Avatar</option>
+                    <option value="🧔">🧔 Adult Avatar</option>
                     <option value="🧕">🧕 Hijab Avatar</option>
                 </select>
             </div>
-            <button class="btn" onclick="registerStudent()">Done & Enter Academy</button>
-            <br><br>
-            <button class="btn" style="background: #666;" onclick="goToView('landing-view')">Back</button>
+            <button class="btn btn-blue" onclick="registerStudent()"><i class="fa-solid fa-rocket"></i> Enter Dashboard</button>
         </div>
 
         <div id="student-dashboard" class="view">
-            <h2>Online Quran Academy - Student Portal</h2>
-            <div id="student-welcome-box" style="margin: 15px 0; font-weight: bold;"></div>
-            
-            <h3>Available Teachers</h3>
-            <div id="teachers-list-container" style="margin-top: 15px;">
-                <!-- Predefined Teachers + Registered Teachers -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #edf2f7; padding-bottom: 15px;">
+                <h2>Online Quran Academy</h2>
+                <button class="btn" style="padding: 6px 12px; font-size: 12px;" onclick="editStudentProfile()"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
             </div>
+            
+            <div id="student-welcome-box" style="margin: 20px 0; font-size: 16px;"></div>
 
-            <div class="footer-info">
-                <strong>Contact for Help:</strong><br>
-                Email: onlinequranacc.pkgmail.com<br>
-                Platform: alphasyberlabs<br>
-                Phones: +92 320 7971218 | +92 322 8733097<br>
-                Facebook: <a href="https://www.facebook.com/share/1BSmyti4jw/" target="_blank">Visit Page</a>
+            <h3><i class="fa-solid fa-user-tie"></i> Certified Available Teachers</h3>
+            <div id="teachers-list-container" style="margin-top: 15px;"></div>
+
+            <div class="footer-box">
+                <h4><i class="fa-solid fa-headset"></i> Contact for Support & Help:</h4>
+                <p style="margin-top: 5px;">📧 Email: <b>onlinequranacc.pkgmail.com</b></p>
+                <p>🏢 Platform: <b>alphasyberlabs</b></p>
+                <p>📞 Phone: <b>+92 320 7971218 | +92 322 8733097</b></p>
+                <p>🔗 Facebook: <a href="https://www.facebook.com/share/1BSmyti4jw/" target="_blank">Visit Academy Page</a></p>
             </div>
             <br>
-            <button class="btn" style="background: #d9534f;" onclick="logout()">Logout</button>
+            <button class="btn" style="background: #e53e3e;" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </div>
 
-        <!-- 5. OWNER PANEL (804) -->
+        <!-- 5. OWNER / ADMIN PANEL (804) -->
         <div id="owner-view" class="view">
-            <h2>👑 Owner Admin Panel (Code 804)</h2>
-            <p>Full Control Center</p>
+            <h2>👑 Admin Control Panel (Code 804)</h2>
             
-            <div style="margin: 15px 0; background: #fff3cd; padding: 10px; border-radius: 6px;">
-                <strong>Special Owner Profile:</strong> Malik Nafay <span class="badge-red">RED BADGE</span> <span class="badge-blue">VERIFIED BLUE TICK</span>
+            <div style="margin: 20px 0; background: rgba(0, 136, 204, 0.1); padding: 18px; border-radius: 12px; border-left: 5px solid #0088cc;">
+                <h3>Owner Profile: MALIK NAFAY <i class="fa-solid fa-circle-check verified-tick"></i> <span class="badge-red">PREMIUM</span></h3>
+                <p style="font-size: 13px; margin-top: 5px; color: #475569;">Full system administration privileges enabled.</p>
             </div>
 
-            <h3>All Registered Users & Teachers</h3>
-            <div id="owner-users-list" style="background: #fff; border: 1px solid #ccc; padding: 10px; max-height: 200px; overflow-y: auto; margin-bottom: 15px;"></div>
-
-            <h3>Global Chats / Messages Viewer</h3>
-            <div id="owner-chats-viewer" style="background: #fff; border: 1px solid #ccc; padding: 10px; max-height: 150px; overflow-y: auto; margin-bottom: 15px; font-size: 13px;"></div>
+            <h3>All Users & Teachers Management</h3>
+            <div id="owner-users-list" style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 15px; border-radius: 10px; margin: 15px 0;"></div>
 
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="btn" onclick="toggleNightMode()">Toggle Night Mode</button>
-                <button class="btn" style="background: #d9534f;" onclick="resetAllData()">Reset All Data</button>
-                <button class="btn" style="background: #666;" onclick="goToView('landing-view')">Back to Home</button>
+                <button class="btn" onclick="toggleNightMode()"><i class="fa-solid fa-moon"></i> Toggle Night Mode</button>
+                <button class="btn" style="background: #e53e3e;" onclick="resetAllData()"><i class="fa-solid fa-trash"></i> Reset System Data</button>
+                <button class="btn" style="background: #64748b;" onclick="goToView('landing-view')"><i class="fa-solid fa-house"></i> Home</button>
             </div>
         </div>
 
     </div>
 
     <script>
-        // Default Predefined Teachers & Master Codes
         const validCodes = {
-            "7860": { name: "Master Admin Teacher", region: "Pakistan", age: 30, gender: "Male", id: "USER7860" },
+            "7860": { name: "Master Admin Tutor", region: "Pakistan", age: 30, gender: "Male", id: "USER7860" },
             "1237": { name: "Sheikh Abdullah", region: "Saudi Arabia", age: 35, gender: "Male", id: "USER1237" },
             "0980": { name: "Qari Ibrahim", region: "Egypt", age: 28, gender: "Male", id: "USER0980" },
             "5656": { name: "Hafiz Syed Zain Ul Abideen Bukhari", region: "Pakistan", age: 19, gender: "Male", id: "USER5656" },
             "3133": { name: "Hafiz Danish Ahmad Rehamani", region: "Pakistan", age: 18, gender: "Male", id: "USER3133" }
         };
 
-        // Local Storage Initialization
-        if (!localStorage.getItem('teachers')) {
-            localStorage.setItem('teachers', JSON.stringify([]));
-        }
-        if (!localStorage.getItem('students')) {
-            localStorage.setItem('students', JSON.stringify([]));
-        }
-        if (!localStorage.getItem('courses')) {
-            localStorage.setItem('courses', JSON.stringify([]));
-        }
-        if (!localStorage.getItem('chats')) {
-            localStorage.setItem('chats', JSON.stringify([]));
-        }
+        if (!localStorage.getItem('teachers')) localStorage.setItem('teachers', JSON.stringify([]));
+        if (!localStorage.getItem('chats')) localStorage.setItem('chats', JSON.stringify([]));
 
         function goToView(viewId) {
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -392,11 +386,9 @@
         function checkOwnerLogin() {
             let code = document.getElementById('owner-code-input').value;
             if (code === '804') {
-                alert('Owner access granted successfully!');
+                alert('Welcome Malik Nafay! Admin Access Granted.');
                 goToView('owner-view');
-            } else {
-                alert('Invalid Owner Code!');
-            }
+            } else { alert('Invalid Code!'); }
         }
 
         function teacherLoginByCode() {
@@ -404,19 +396,14 @@
             if (validCodes[code]) {
                 let t = validCodes[code];
                 localStorage.setItem('currentTeacher', JSON.stringify(t));
-                alert('Login Successful!');
                 loadTeacherDashboard(t);
             } else {
-                // Check custom registered teachers
                 let teachers = JSON.parse(localStorage.getItem('teachers'));
                 let found = teachers.find(item => item.code === code);
                 if (found) {
                     localStorage.setItem('currentTeacher', JSON.stringify(found));
-                    alert('Login Successful!');
                     loadTeacherDashboard(found);
-                } else {
-                    alert('Invalid Teacher Code!');
-                }
+                } else { alert('Invalid Code!'); }
             }
         }
 
@@ -425,72 +412,25 @@
             let region = document.getElementById('t-region').value;
             let age = parseInt(document.getElementById('t-age').value);
             let dob = document.getElementById('t-dob').value;
-            let gender = document.getElementById('t-gender').value;
-
-            if (!name || !region || !age || !dob) {
-                alert('Please fill all fields!');
-                return;
-            }
-
-            // Age 12+ check based on DOB or age input
-            if (age < 12) {
-                alert('Registration Cancelled! Teacher must be 12 years or older.');
-                return;
-            }
-
-            let randomCode = Math.floor(1000 + Math.random() * 9000).toString();
-            let randomId = 'USER' + Math.floor(10000 + Math.random() * 90000);
-
-            let newTeacher = { name, region, age, dob, gender, code: randomCode, id: randomId };
+            if (!name || age < 12) { alert('Age must be 12+ and all fields completed!'); return; }
+            let code = Math.floor(1000 + Math.random() * 9000).toString();
+            let newT = { name, region, age, code, id: 'USER' + Math.floor(10000 + Math.random() * 90000) };
             let teachers = JSON.parse(localStorage.getItem('teachers'));
-            teachers.push(newTeacher);
+            teachers.push(newT);
             localStorage.setItem('teachers', JSON.stringify(teachers));
-
-            alert(`Registration Successful! Your Teacher Code is: ${randomCode}. Please save it for future login.`);
-            localStorage.setItem('currentTeacher', JSON.stringify(newTeacher));
-            loadTeacherDashboard(newTeacher);
+            alert(`Registered! Your secret code is: ${code}`);
+            localStorage.setItem('currentTeacher', JSON.stringify(newT));
+            loadTeacherDashboard(newT);
         }
 
-        function loadTeacherDashboard(teacher) {
+        function loadTeacherDashboard(t) {
             goToView('teacher-dashboard');
             document.getElementById('teacher-profile-card').innerHTML = `
-                <h3>Welcome, ${teacher.name}</h3>
-                <p><strong>ID:</strong> <span id="t-id-display">${teacher.id}</span> <button onclick="editTeacherId()" style="font-size:10px;">Edit</button></p>
-                <p><strong>Region:</strong> ${teacher.region} | <strong>Age:</strong> ${teacher.age}</p>
-                <p><strong>Your Secret Code:</strong> ${teacher.code || 'Custom'}</p>
+                <h3>${t.name} <i class="fa-solid fa-circle-check verified-tick"></i></h3>
+                <p><b>ID:</b> ${t.id} | <b>Region:</b> ${t.region} | <b>Age:</b> ${t.age}</p>
+                <p><b>Secret Login Code:</b> ${t.code || 'Master Code'}</p>
             `;
-            loadTeacherInbox(teacher.id);
-        }
-
-        function editTeacherId() {
-            let newId = prompt("Enter new Username/ID:");
-            if (newId) {
-                let t = JSON.parse(localStorage.getItem('currentTeacher'));
-                t.id = newId;
-                localStorage.setItem('currentTeacher', JSON.stringify(t));
-                loadTeacherDashboard(t);
-                alert('ID updated!');
-            }
-        }
-
-        function createCourse() {
-            let name = document.getElementById('c-name').value;
-            let price = document.getElementById('c-price').value;
-            let bio = document.getElementById('c-bio').value;
-            let t = JSON.parse(localStorage.getItem('currentTeacher'));
-
-            if (!name || !price) {
-                alert('Please enter course name and price.');
-                return;
-            }
-
-            let courses = JSON.parse(localStorage.getItem('courses'));
-            courses.push({ teacherName: t.name, name, price, bio });
-            localStorage.setItem('courses', JSON.stringify(courses));
-            alert('Course created successfully!');
-            document.getElementById('c-name').value = '';
-            document.getElementById('c-price').value = '';
-            document.getElementById('c-bio').value = '';
+            loadInbox(t.name);
         }
 
         function registerStudent() {
@@ -499,137 +439,84 @@
             let country = document.getElementById('s-country').value;
             let age = document.getElementById('s-age').value;
             let avatar = document.getElementById('s-avatar').value;
-
-            if (!name || !city || !country || !age) {
-                alert('Please fill all student details!');
-                return;
-            }
-
-            let student = { name, city, country, age, avatar, id: 'STU' + Math.floor(1000 + Math.random() * 9000) };
-            localStorage.setItem('currentStudent', JSON.stringify(student));
-            alert('Profile created successfully! Permanent Login Saved.');
+            if(!name) { alert('Enter name'); return; }
+            let stu = { name, city, country, age, avatar, id: 'STU' + Math.floor(1000 + Math.random() * 9000) };
+            localStorage.setItem('currentStudent', JSON.stringify(stu));
             loadStudentDashboard();
         }
 
         function loadStudentDashboard() {
             goToView('student-dashboard');
-            let student = JSON.parse(localStorage.getItem('currentStudent'));
-            if (!student) {
-                goToView('student-auth-view');
-                return;
-            }
-
+            let stu = JSON.parse(localStorage.getItem('currentStudent'));
+            if(!stu) { goToView('student-auth-view'); return; }
             document.getElementById('student-welcome-box').innerHTML = `
-                <p>${student.avatar} Welcome, ${student.name} (${student.city}, ${student.country}) - ID: ${student.id}</p>
+                <span>${stu.avatar} <b>${stu.name}</b> (${stu.city}, ${stu.country})</span>
             `;
-
-            let container = document.getElementById('teachers-list-container');
             let html = '';
-
-            // Render default valid code teachers
-            for (let code in validCodes) {
-                let t = validCodes[code];
+            for (let c in validCodes) {
+                let t = validCodes[c];
                 html += `
-                    <div class="teacher-item">
-                        <h4>👨‍🏫 ${t.name}</h4>
-                        <p>Region: ${t.region} | Age: ${t.age}+</p>
-                        <p><strong>Code:</strong> ${code}</p>
-                        <button class="btn" style="margin-top:5px; padding:5px 10px;" onclick="hireTeacher('${t.name}')">Hire / Send Message</button>
+                    <div class="teacher-card">
+                        <div class="teacher-info">
+                            <h4>👨‍🏫 ${t.name} <i class="fa-solid fa-circle-check verified-tick"></i></h4>
+                            <p style="font-size: 12px; color: #64748b;">${t.region} | Age: ${t.age}+ | Code: <b>${c}</b></p>
+                        </div>
+                        <button class="btn" onclick="hireTeacher('${t.name}')"><i class="fa-solid fa-paper-plane"></i> Contact / Hire</button>
                     </div>
                 `;
             }
-
-            // Render custom registered teachers
-            let teachers = JSON.parse(localStorage.getItem('teachers'));
-            teachers.forEach(t => {
-                html += `
-                    <div class="teacher-item">
-                        <h4>👨‍🏫 ${t.name}</h4>
-                        <p>Region: ${t.region} | Age: ${t.age}+</p>
-                        <p><strong>Code:</strong> ${t.code}</p>
-                        <button class="btn" style="margin-top:5px; padding:5px 10px;" onclick="hireTeacher('${t.name}')">Hire / Send Message</button>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
+            document.getElementById('teachers-list-container').innerHTML = html;
         }
 
-        function hireTeacher(teacherName) {
-            let student = JSON.parse(localStorage.getItem('currentStudent'));
-            let msg = prompt(`Send hiring request or message to ${teacherName}:`, "Assalam-o-Alaikum, I want to join your Quran class.");
-            if (msg) {
+        function editStudentProfile() {
+            let stu = JSON.parse(localStorage.getItem('currentStudent'));
+            let newName = prompt("Edit Student Name:", stu.name);
+            if(newName) {
+                stu.name = newName;
+                localStorage.setItem('currentStudent', JSON.stringify(stu));
+                loadStudentDashboard();
+            }
+        }
+
+        function hireTeacher(tName) {
+            let stu = JSON.parse(localStorage.getItem('currentStudent'));
+            let msg = prompt(`Message to ${tName}:`, "Assalam-o-Alaikum, I want to join your Quran class.");
+            if(msg) {
                 let chats = JSON.parse(localStorage.getItem('chats'));
-                chats.push({ sender: student.name, receiver: teacherName, message: msg, time: new Date().toLocaleTimeString() });
+                chats.push({ sender: stu.name, receiver: tName, message: msg, time: new Date().toLocaleTimeString() });
                 localStorage.setItem('chats', JSON.stringify(chats));
-                alert('Message sent successfully to the teacher!');
+                alert('Sent successfully!');
             }
         }
 
-        function loadTeacherInbox(teacherId) {
-            let t = JSON.parse(localStorage.getItem('currentTeacher'));
-            let chats = JSON.parse(localStorage.getItem('chats'));
+        function loadInbox(tName) {
+            let chats = JSON.parse(localStorage.getItem('chats')).filter(c => c.receiver === tName);
             let inbox = document.getElementById('teacher-inbox');
-            let myChats = chats.filter(c => c.receiver === t.name);
-
-            if (myChats.length === 0) {
-                inbox.innerHTML = `<p style="color: #777; font-size: 13px;">No messages yet.</p>`;
-                return;
-            }
-
+            if(chats.length === 0) { inbox.innerHTML = '<p>No messages yet.</p>'; return; }
             let html = '';
-            myChats.forEach(c => {
-                html += `<div style="border-bottom: 1px solid #eee; margin-bottom:5px; padding-bottom:5px;"><strong>From ${c.sender}:</strong> ${c.message} <span style="font-size:10px; color:#888;">(${c.time})</span></div>`;
-            });
+            chats.forEach(c => { html += `<p><b>From ${c.sender}:</b> ${c.message} <small>(${c.time})</small></p>`; });
             inbox.innerHTML = html;
         }
 
         function loadOwnerDashboard() {
-            let usersList = document.getElementById('owner-users-list');
             let teachers = JSON.parse(localStorage.getItem('teachers'));
-            let students = JSON.parse(localStorage.getItem('students'));
-
-            let html = `<strong>Special Owner Profile:</strong> Malik Nafay <span class="badge-red">RED BADGE</span> <span class="badge-blue">VERIFIED</span><br><br>`;
-            html += `<strong>Registered Teachers:</strong><br>`;
+            let html = '<b>Registered Tutors:</b><br>';
             teachers.forEach((t, i) => {
-                html += `- ${t.name} (${t.region}) <button onclick="removeTeacher(${i})" style="color:red; font-size:10px;">Remove</button><br>`;
+                html += `- ${t.name} (Code: ${t.code}) <button onclick="removeTeacher(${i})" style="color:red; font-size:11px;">Delete</button><br>`;
             });
-
-            usersList.innerHTML = html;
-
-            let chatsViewer = document.getElementById('owner-chats-viewer');
-            let chats = JSON.parse(localStorage.getItem('chats'));
-            let chatHtml = '';
-            chats.forEach(c => {
-                chatHtml += `[${c.time}] <b>${c.sender}</b> -> <b>${c.receiver}</b>: ${c.message}<br>`;
-            });
-            chatsViewer.innerHTML = chatHtml || 'No chats recorded yet.';
+            document.getElementById('owner-users-list').innerHTML = html || 'No custom registered teachers yet.';
         }
 
-        function removeTeacher(index) {
+        function removeTeacher(i) {
             let teachers = JSON.parse(localStorage.getItem('teachers'));
-            teachers.splice(index, 1);
+            teachers.splice(i, 1);
             localStorage.setItem('teachers', JSON.stringify(teachers));
             loadOwnerDashboard();
-            alert('Teacher removed successfully.');
         }
 
-        function toggleNightMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-
-        function resetAllData() {
-            if (confirm('Are you sure you want to reset all data?')) {
-                localStorage.clear();
-                location.reload();
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem('currentTeacher');
-            localStorage.removeItem('currentStudent');
-            goToView('landing-view');
-        }
+        function toggleNightMode() { document.body.classList.toggle('dark-mode'); }
+        function resetAllData() { localStorage.clear(); location.reload(); }
+        function logout() { localStorage.clear(); goToView('landing-view'); }
     </script>
 </body>
 </html>
